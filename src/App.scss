@@ -1,3 +1,5 @@
+$status_bar_height: 25px;
+
 #mobile {
   position: absolute;
   left: 50%;
@@ -8,21 +10,26 @@
   width: 360px;
   margin-left: -360px / 2;
 
-  background-color: #eee;
+  background-color: #f5f5f5;
   border-radius: 8px;
   // box-shadow: 0 0 30px 0 rgba(34, 195, 170, 0.5);
-
   transform: translate3d(0, 0, 0);
 }
 
 .status-bar {
   position: absolute;
   top: 0px;
-  height: 25px;
+  height: $status_bar_height;
   width: 100%;
   background: transparent;
   // background: rgba(255, 255, 255, 0.8);
   // backdrop-filter: blur(20px);
+}
+
+.main-app {
+  padding: 16px;
+  border-radius: 12px;
+  overflow: auto;
 }
 
 .dock-menu {
@@ -33,11 +40,11 @@
   bottom: 16px;
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(255, 255, 255, 0.8);
+  background: #fff;
   backdrop-filter: blur(20px);
   border-radius: 20px;
   padding: 8px 16px;
-  // box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 
   .dock-icon {
     display: flex;

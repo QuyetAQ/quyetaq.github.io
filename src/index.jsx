@@ -12,12 +12,25 @@ root.render(
     <ConfigProvider
       theme={{
         token: {
-          // Seed Token
-          colorPrimary: "#00b96b",
-          borderRadius: 2,
-
-          // Alias Token
-          colorBgContainer: "#f6ffed",
+          colorBgContainer: "#fff",
+          fontSize: "12px",
+          fontSizeHeading1: 38,
+          fontSizeHeading2: 30,
+          fontSizeHeading3: 24,
+          fontSizeHeading4: 20,
+          fontSizeHeading5: 16,
+        },
+        components: {
+          Card: {
+            fontSize: "12px",
+            headerHeight: 28,
+            headerFontSize: 12,
+          },
+          Carousel: {
+            dotWidth: 8,
+            dotHeight: 8,
+            dotActiveWidth: 8,
+          },
         },
       }}>
       <AuthProvider>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Flex } from "antd";
+import { Flex, Typography } from "antd";
 import { formatDate } from "@utils/helpers/helpers";
 import { DATE_FORMAT } from "@utils/constants/constants";
 import { Icon } from "@iconify/react";
@@ -41,10 +41,12 @@ const StatusBar = () => {
             style={{ width: "20px", height: "20px", cursor: "unset" }}
           />
           &nbsp;
-          <strong style={{ marginTop: "2px" }}>{connection}</strong>
+          <Typography.Text strong>{connection}</Typography.Text>
         </Flex>
         <Flex align={"center"}>
-          <strong>{formatDate(time, DATE_FORMAT.HOUR_MIN)}</strong>
+          <Typography.Text strong>
+            {formatDate(time, DATE_FORMAT.HOUR_MIN)}
+          </Typography.Text>
         </Flex>
         <Flex align={"center"}>
           <Icon

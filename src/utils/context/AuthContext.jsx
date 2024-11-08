@@ -1,19 +1,10 @@
-import React, {
-  createContext,
-  useContext,
-  useEffect,
-  useMemo,
-  useState,
-} from "react";
+import React, { createContext, useContext, useMemo, useState } from "react";
 
 const AuthContext = createContext({});
 
 export function AuthProvider({ children }) {
   const [theme, setTheme] = useState("light");
-
-  useEffect(() => {
-    // eslint-disable-next-line
-  }, []);
+  const [device, setDevice] = useState("web");
 
   const changeTheme = newTheme => {
     setTheme(newTheme);
@@ -23,9 +14,11 @@ export function AuthProvider({ children }) {
     () => ({
       theme,
       changeTheme,
+      device,
+      setDevice,
     }),
     // eslint-disable-next-line
-    [theme],
+    [theme, device],
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

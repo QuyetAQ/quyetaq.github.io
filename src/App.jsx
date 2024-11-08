@@ -1,9 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import useAuth from "@utils/context/AuthContext";
 import StatusBar from "@view/StatusBar";
+import MainApp from "@view/MainApp";
 import DockMenu from "@view/DockMenu";
+import { motion } from "framer-motion";
 import "./App.scss";
 
 const App = () => {
+  const { device, setDevice } = useAuth();
+  const [isVisibleScroll, setIsVisibleScroll] = useState(true);
+
   useEffect(() => {
     handleResize();
     window.addEventListener("resize", handleResize);
@@ -20,7 +26,10 @@ const App = () => {
       mobile.style.marginLeft = "-50%";
       mobile.style.marginTop = "0";
       mobile.style.top = "0";
+      setDevice("mobile");
       return;
+    } else {
+      setDevice("web");
     }
 
     const margin = 15;
@@ -45,9 +54,17 @@ const App = () => {
 
   return (
     <div id="mobile">
-      <StatusBar />
-      <div className="mobile-out-app"></div>
-      <DockMenu />
+      {device === "web" && <StatusBar />}
+      <MainApp setShowHiddenDiv={value => setIsVisibleScroll(value)} />
+      {isVisibleScroll && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.5 }}>
+          <DockMenu />
+        </motion.div>
+      )}
     </div>
   );
 };
